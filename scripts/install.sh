@@ -14,7 +14,7 @@ case "$TRAVIS_OS_NAME" in
 esac
 cd src
 
-source split_repo_slug.sh
+source ../scripts/split_repo_slug.sh
 
 ../scripts/build.sh ${REPO}_${TRAVIS_TAG}
 cd dist 
