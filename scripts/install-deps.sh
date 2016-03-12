@@ -5,7 +5,7 @@ set -v
 case "$TRAVIS_OS_NAME" in
   linux)
     echo "START LINUX"
-    sudo apt-get install -y liblo
+    sudo apt-get -y install python3 liblo
     echo "END LINUX"
   ;;
   osx)
