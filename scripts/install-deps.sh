@@ -10,13 +10,13 @@ case "$TRAVIS_OS_NAME" in
   ;;
   osx)
     echo "START OSX"
-    brew install python
-    brew link --overwrite python
+    brew install python3
+    brew link --overwrite python3
     brew install liblo
     echo "END OSX"
   ;;
 esac
 
-sudo pip install Cython
-sudo pip install pyliblo
-sudo pip install pyinstaller
+sudo pip3 install Cython
+sudo pip3 install pyliblo
+sudo pip3 install pyinstaller
