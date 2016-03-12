@@ -15,7 +15,7 @@ install:
   - travis_wait scripts/install.sh
   - source scripts/split_repo_slug.sh
 
-script: ls
+script: ls -lisah
 
 deploy:
   provider: releases
