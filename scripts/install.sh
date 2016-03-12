@@ -13,13 +13,9 @@ case "$TRAVIS_OS_NAME" in
 
 esac
 cd src
-if [[ ${TRAVIS_REPO_SLUG} =~ ([^,]+).*"/"([^,]+) ]]; then 
-    OWNER=${BASH_REMATCH[1]}
-    REPO=${BASH_REMATCH[2]}
-fi
-echo $OWNER; echo $REPO
-export  OWNER
-export REPO
+
+source split_repo_slug.sh
+
 ../scripts/build.sh ${REPO}_${TRAVIS_TAG}
 cd dist 
 

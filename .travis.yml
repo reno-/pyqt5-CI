@@ -11,7 +11,10 @@ os:
 
 before_install: scripts/install-deps.sh
 
-install: travis_wait scripts/install.sh
+install: 
+  - travis_wait scripts/install.sh
+  - source split_repo_slug.sh
+  - echo "${REPO}"
 
 script: ls
 
