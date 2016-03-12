@@ -6,7 +6,7 @@ virtualenv:
   system_site_packages: true
 
 os:
-#- osx
+- osx
 - linux
 
 before_install: scripts/install-deps.sh
@@ -15,7 +15,7 @@ install:
   - travis_wait scripts/install.sh
   - source scripts/split_repo_slug.sh
 
-script: ls -lisah src
+script: echo "Less is More"
 
 deploy:
   provider: releases
