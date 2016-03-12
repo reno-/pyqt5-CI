@@ -5,21 +5,15 @@ dist: trusty
 virtualenv:
   system_site_packages: true
 
-install:
- - sudo apt-get update
- - sudo apt-get -y install python3-pyqt5 python3-setuptools libpython3.4-dev 
- - sudo easy_install3 pip
- - sudo pip3 install pyinstaller
+os:
+- osx
+- linux
 
-script: 
- - cd src
- - WHOLE_SLUG=${TRAVIS_REPO_SLUG}
- - read OWNER REPO <<<$(IFS="/"; echo $WHOLE_SLUG)
- - echo $REPO
- - ../scripts/build.sh ${REPO}_${TRAVIS_TAG}
- - cd dist 
- - zip ${REPO}_${TRAVIS_TAG}_$TRAVIS_OS_NAME.zip ${REPO}_${TRAVIS_TAG}
- - ls
+before_install: scripts/install-deps.sh
+
+install: travis_wait scripts/install.sh
+
+script: ls
 
 deploy:
   provider: releases
@@ -27,7 +21,7 @@ deploy:
   api_key:
     secure: "${SECURE_KEY}"
   file:
-  - "${TRAVIS_BUILD_DIR}/${TRAVIS_REPO_SLUG}/src/dist/${REPO}_${TRAVIS_TAG}_${TRAVIS_OS_NAME}.zip"
+  - "${TRAVIS_BUILD_DIR}/src/dist/${REPO}_${TRAVIS_TAG}_${TRAVIS_OS_NAME}.zip"
   on:
     tags: true
     all_branches: true
