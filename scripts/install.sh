@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -v
 
@@ -12,11 +12,12 @@ case "$TRAVIS_OS_NAME" in
   ;;
 
 esac
-
 cd src
-WHOLE_SLUG=${TRAVIS_REPO_SLUG}
-read OWNER REPO <<<$(IFS="/"; echo $WHOLE_SLUG)
-echo $REPO
+if [[ ${TRAVIS_REPO_SLUG} =~ ([^,]+).*"/"([^,]+) ]]; then 
+    OWNER=${BASH_REMATCH[1]}
+    REPO=${BASH_REMATCH[2]}
+fi
+echo $OWNER; echo $REPO
 ../scripts/build.sh ${REPO}_${TRAVIS_TAG}
 cd dist 
 
