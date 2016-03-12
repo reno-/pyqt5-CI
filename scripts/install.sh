@@ -18,6 +18,8 @@ if [[ ${TRAVIS_REPO_SLUG} =~ ([^,]+).*"/"([^,]+) ]]; then
     REPO=${BASH_REMATCH[2]}
 fi
 echo $OWNER; echo $REPO
+export  OWNER
+export REPO
 ../scripts/build.sh ${REPO}_${TRAVIS_TAG}
 cd dist 
 
