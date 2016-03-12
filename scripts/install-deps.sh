@@ -20,4 +20,3 @@ esac
 sudo pip install Cython
 sudo pip install pyliblo
 sudo pip install pyinstaller
-sudo pip install -r 3rdparty/pydular/requirements.txt
