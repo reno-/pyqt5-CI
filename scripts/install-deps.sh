@@ -5,15 +5,13 @@ set -v
 case "$TRAVIS_OS_NAME" in
   linux)
     echo "START LINUX"
-    sudo apt-get -y install python3 python3-setuptools libpython3.4-dev 
-    sudo easy_install3 pip
+    # install OSC dependancy
     sudo apt-get -y install liblo7
     echo "END LINUX"
   ;;
   osx)
     echo "START OSX"
-    brew install python3
-    brew link --overwrite python3
+    # install OSC dependancy
     brew install liblo
     echo "END OSX"
   ;;
