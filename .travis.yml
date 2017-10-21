@@ -19,13 +19,11 @@ os:
 - osx
 - linux
 
-before_install: scripts/install-deps.sh
+before_install: source scripts/split_repo_slug.sh
 
-install: 
-  - travis_wait scripts/install.sh
-  - source scripts/split_repo_slug.sh
+install: scripts/deps.sh
 
-script: echo "Less is More"
+script: travis_wait scripts/install.sh
 
 deploy:
   provider: releases
