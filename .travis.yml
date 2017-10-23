@@ -1,6 +1,14 @@
-language: c
-sudo: required
-dist: trusty
+language: python
+
+python:
+  - "2.7"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.5-dev" # 3.5 development branch
+  - "3.6"
+  - "3.6-dev" # 3.6 development branch
+  - "nightly" # currently points to 3.7-dev
 
 virtualenv:
   system_site_packages: true
@@ -9,13 +17,11 @@ os:
 - osx
 - linux
 
-before_install: scripts/install-deps.sh
+before_install: source scripts/split_repo_slug.sh
 
-install: 
-  - travis_wait scripts/install.sh
-  - source scripts/split_repo_slug.sh
+install: scripts/deps.sh
 
-script: echo "Less is More"
+script: travis_wait scripts/install.sh
 
 deploy:
   provider: releases
